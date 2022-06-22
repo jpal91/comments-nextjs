@@ -23,7 +23,7 @@ const Mobile = (props) => {
             <Content reply={reply} content={content} query={query} />
             <Grid container item xs={12} sx={{ alignItems: "center", mt: 1.5 }}>
                 <UpOrDown query={query} score={score} comID={comID}/>
-                <ReplyButton query={query} comID={comID}/>
+                <ReplyButton query={query} comID={comID} username={username}/>
             </Grid>
         </Grid>
     );

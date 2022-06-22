@@ -26,6 +26,7 @@ const Desktop = (props) => {
                     <ReplyButton 
                         query={query}
                         comID={comID}
+                        username={username}
                     />
                 </Grid>
                 <Content 
