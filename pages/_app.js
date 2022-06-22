@@ -12,7 +12,7 @@ const App = ({ Component, pageProps }) => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container fluid="true" sx={{ mt: "10%" }}>
+      <Container fluid="true" sx={{ mt: "5%" }}>
         <Component {...pageProps} />
       </Container>
     </ThemeProvider>

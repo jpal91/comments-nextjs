@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 
 
 import Comment from "./Comment";
+import Replies from "./Replies";
 
 const CommentsSection = (props) => {
     const { comments, query } = props;
@@ -15,6 +16,7 @@ const CommentsSection = (props) => {
                 <Grid item xs={12}>
                     <Comment commentData={c} query={query} />
                 </Grid>
+                {c.replies.length > 0 ? <Replies replies={c.replies} query={query} /> : null}
             </React.Fragment>
         );
     });
