@@ -7,18 +7,19 @@ import CommentsSection from '../components/CommentsSection'
 // import { formatting } from '../helpers/formatting'
 
 const HomePage = () => {
-	// const { comments } = props
+	// fetches all comments from api on loading
 	const fetcher = url => axios.get(url).then(res => res.data)
 	const { data, error } = useSWR('/api/all-coms', fetcher)
+
+	//used media query to determine window size and change layout
+	// const matches = useMediaQuery(currentTheme.breakpoints.down("lg"));
 	const currentTheme = useTheme();
 	const matches = useMediaQuery(currentTheme.breakpoints.down("lg"));
-	console.log(matches)
+
+
 	if (!data) {
 		return <p>Loading...</p>
 	}
-
-	// //used media query to determine window size and change layout
-	// const matches = useMediaQuery(currentTheme.breakpoints.down("lg"));
 	
 	return (
 		<Grid
@@ -30,17 +31,5 @@ const HomePage = () => {
 		</Grid>
 	)
 };
-
-// export const getServerSideProps = async () => {
-// 	const response = await axios.get('/api/all-coms')
-
-// 	const formattedData = formatting(response.data)
-
-// 	return {
-// 		props: {
-// 			comments: formattedData
-// 		}
-// 	}
-// };
 
 export default HomePage;

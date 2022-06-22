@@ -1,6 +1,7 @@
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
+//sub-component of Comment holds written content of comment
 const Content = (props) => {
     const { reply, content, query } = props;
 
@@ -11,6 +12,7 @@ const Content = (props) => {
             sx={{
                 mr: query ? 0 : 2,
                 mt: 1,
+                justifyContent: 'flex-start'
             }}
         >
             <Typography className="span" sx={{ fontSize: 16 }}>

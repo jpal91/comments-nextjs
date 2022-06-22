@@ -5,11 +5,14 @@ import { findTime } from "../helpers/findtime";
 import Desktop from './comment/Desktop'
 import Mobile from './comment/Mobile'
 
+//component for individual comment, mapped from CommentSection
 const Comment = (props) => {
     const { commentData, query } = props;
     // const query = useMediaQuery(currentTheme.breakpoints.down("lg"));
     const time = findTime(commentData.createdAt)
 
+    //Mobile and Desktop have same info but ultimately different configuration
+    //was having difficulty getting them into one component so broke it into two with sub components
     return (
         <Card sx={{ maxWidth: { xs: 350, lg: 750 }, my: 2 }}>
             <Grid
@@ -30,6 +33,7 @@ const Comment = (props) => {
                         username={commentData.user.username}
                         reply={commentData.replyingTo ? commentData.replyingTo : null}
                         query={query}
+                        comID={commentData.comID}
                     />
                 ) : (
                     <Desktop
@@ -40,6 +44,7 @@ const Comment = (props) => {
                         username={commentData.user.username}
                         reply={commentData.replyingTo ? commentData.replyingTo : null}
                         query={query}
+                        comID={commentData.comID}
                     />
                 )}
             </Grid>

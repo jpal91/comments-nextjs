@@ -8,6 +8,15 @@ export const findTime = (str) => {
     let td = timediff(str, now, 'YMWDHm')
     let keys = Object.keys(td)
     let values = Object.values(td)
+    
+    //if the reply was just submitted, all timediff values will come back as 0
+    //ie "there's been 0 time passed since this comment was submitted"
+    //falls back to a return of "Just now"
+    let newCommentCheck = values.filter((v) => v !== 0)
+
+    if (newCommentCheck.length === 0) {
+        return 'Just now'
+    }
 
     let index = 0
 

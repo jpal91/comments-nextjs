@@ -6,12 +6,15 @@ import UserInfo from './UserInfo'
 import ReplyButton from './ReplyButton'
 import Content from './Content'
 
+//direct child of Comment, only generates if large screen
+//sub-components of Comment are all included here to make up the full Comment component
+//same components used as Mobile except in different order
 const Desktop = (props) => {
-    const { query, score, username, image, createdAt, reply, content } = props
+    const { query, score, username, image, createdAt, reply, content, comID } = props
     
     return (
         <React.Fragment>
-            <UpOrDown query={query} score={score}/>
+            <UpOrDown query={query} score={score} comID={comID}/>
             <Grid container item xs={11} sx={{ alignItems: 'center' }}>
                 <Grid container item xs={12}>
                     <UserInfo 
@@ -22,6 +25,7 @@ const Desktop = (props) => {
                     />
                     <ReplyButton 
                         query={query}
+                        comID={comID}
                     />
                 </Grid>
                 <Content 

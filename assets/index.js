@@ -7,6 +7,7 @@ import borders from "./base/borders";
 import card from "./components/card";
 import container from "./components/container";
 import grid from "./components/grid";
+import textfield from "./components/textfield";
 
 export default createTheme({
     typography: { ...typography },
@@ -17,6 +18,8 @@ export default createTheme({
         MuiCard: { ...card },
         MuiContainer: { ...container },
         MuiGrid: { ...grid },
+        MuiTextField: { ...textfield },
+        MuiOutlinedInput: { ...textfield }
     },
 });
 
