@@ -9,13 +9,14 @@ import container from "./components/container";
 import grid from "./components/grid";
 
 export default createTheme({
-  typography: { ...typography },
-  palette: { ...colors },
-  breakpoints: { ...breakpoints },
-  borders: { ...borders },
-  components: {
-    MuiCard: { ...card },
-    MuiContainer: { ...container },
-    MuiGrid: { ...grid }
-  }
+    typography: { ...typography },
+    palette: { ...colors },
+    breakpoints: { ...breakpoints },
+    borders: { ...borders },
+    components: {
+        MuiCard: { ...card },
+        MuiContainer: { ...container },
+        MuiGrid: { ...grid },
+    },
 });
+

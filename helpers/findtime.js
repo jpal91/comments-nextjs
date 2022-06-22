@@ -1,3 +1,5 @@
+import timediff from "timediff"
+
 //finds the 'time ago' with the timediff package
 export const findTime = (str) => {
 

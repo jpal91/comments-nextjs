@@ -6,6 +6,7 @@ const Content = (props) => {
 
     return (
         <Grid
+            item
             xs={12}
             sx={{
                 mr: query ? 0 : 2,

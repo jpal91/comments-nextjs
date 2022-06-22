@@ -7,8 +7,9 @@ const UserInfo = (props) => {
     
     return (
         <Grid
+            item
             xs={query ? 12 : 10}
-            sx={{ alignItems: 'center' }}
+            sx={{ alignItems: 'center', justifyContent: 'flex-start' }}
         >
             <Avatar 
                 src={image}

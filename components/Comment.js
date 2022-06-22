@@ -2,20 +2,23 @@ import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 
 import { findTime } from "../helpers/findtime";
+import Desktop from './comment/Desktop'
+import Mobile from './comment/Mobile'
 
 const Comment = (props) => {
     const { commentData, query } = props;
-
+    // const query = useMediaQuery(currentTheme.breakpoints.down("lg"));
     const time = findTime(commentData.createdAt)
 
     return (
-        <Card sx={{ maxWidth: { xs: 350, xl: 750 }, my: 2 }}>
+        <Card sx={{ maxWidth: { xs: 350, lg: 750 }, my: 2 }}>
             <Grid
                 container
                 sx={{
                     flexWrap: "nowrap",
-                    p: { xs: 2, xl: 1.5 },
-                    mx: { xs: 0.5, xl: 1.5 },
+                    p: { xs: 2, lg: 1.5 },
+                    mx: query ? 0.5 : 0,
+                    my: query ? 0 : 1.5
                 }}
             >
                 {query ? (
@@ -26,6 +29,7 @@ const Comment = (props) => {
                         image={commentData.user.image.webp}
                         username={commentData.user.username}
                         reply={commentData.replyingTo ? commentData.replyingTo : null}
+                        query={query}
                     />
                 ) : (
                     <Desktop
@@ -35,6 +39,7 @@ const Comment = (props) => {
                         image={commentData.user.image.webp}
                         username={commentData.user.username}
                         reply={commentData.replyingTo ? commentData.replyingTo : null}
+                        query={query}
                     />
                 )}
             </Grid>

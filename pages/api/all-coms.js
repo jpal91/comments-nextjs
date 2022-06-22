@@ -1,5 +1,7 @@
 import { MongoClient } from 'mongodb'
 
+import { formatting } from '../../helpers/formatting'
+
 const uri = process.env.MONGO_URL;
 const client = new MongoClient(uri, { monitorCommands: true });
 const db = client.db("fe-com");
@@ -15,7 +17,9 @@ const handler = async (req, res) => {
 
         const result = await col.find().toArray()
 
-        res.status(200).send(result)
+        const formattedData = formatting(result)
+
+        res.status(200).send(formattedData)
 
     } catch (error) {
         res.status(422).send(error.message)
