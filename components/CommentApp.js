@@ -11,7 +11,7 @@ const CommentApp = (props) => {
         <React.Fragment>
             <CommentsSection comments={comments} query={query} />
             <Grid item xs={12}>
-                
+                <ResponseSection query={query}/>
             </Grid>
         </React.Fragment>
     )

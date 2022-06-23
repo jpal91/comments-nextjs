@@ -42,6 +42,16 @@ const DeleteButton = (props) => {
         <React.Fragment>
             <IconButton onClick={handleOpen}>
                 <Image src="/images/icon-delete.svg" width="12" height="14" />
+                <Typography
+                sx={{
+                    color: 'primary.red',
+                    fontWeight: 'medium',
+                    fontSize: 16,
+                    ml: 0.5
+                }}
+            >
+                Delete
+            </Typography>
             </IconButton>
             <Modal open={open} onClose={handleClose} closeAfterTransition>
                 <Card

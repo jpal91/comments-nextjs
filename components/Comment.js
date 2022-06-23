@@ -14,7 +14,7 @@ const Comment = (props) => {
     //Mobile and Desktop have same info but ultimately different configuration
     //was having difficulty getting them into one component so broke it into two with sub components
     return (
-        <Card sx={{ maxWidth: { xs: 350, lg: 750 }, my: 2 }}>
+        <Card sx={{ width: '100%', maxWidth: { xs: 350, lg: 750 }, my: 2 }}>
             <Grid
                 container
                 sx={{

@@ -18,8 +18,8 @@ export default createTheme({
         MuiCard: { ...card },
         MuiContainer: { ...container },
         MuiGrid: { ...grid },
-        //MuiTextField: { ...textfield },
-        //MuiOutlinedInput: { ...textfield }
+        MuiTextField: { ...textfield },
+        MuiOutlinedInput: { ...textfield }
     },
 });
 

@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from "react";
+import React, { useContext, useState } from "react";
 import axios from 'axios'
 import { useSWRConfig } from "swr";
 
@@ -19,7 +19,8 @@ import ReplyContext from "../helpers/context";
 
 const ReplySection = (props) => {
     const { query, commentData } = props;
-    const textRef = useRef();
+    const [replyText, setReplyText] = useState()
+    const handleChange = (event) => setReplyText(event.target.value)
     const replyCtx = useContext(ReplyContext);
     const { mutate } = useSWRConfig()
 
@@ -32,7 +33,7 @@ const ReplySection = (props) => {
 
         const response = await axios.post('/api/add-comment', {
             ...commentData,
-            content: textRef.current.value
+            content: replyText
         })
 
         mutate('/api/all-coms')
@@ -75,7 +76,7 @@ const ReplySection = (props) => {
                 multiline
                 fullWidth
                 rows={2}
-                ref={textRef}
+                onChange={handleChange}
                 defaultValue={`@${commentData.user.username}`}
             />
         </Grid>

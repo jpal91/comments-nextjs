@@ -12,7 +12,7 @@ const handler = async (req, res) => {
     }
 
     const { user, comID, content } = req.body
-    return console.log(content)
+
     try {
         await client.connect()
 

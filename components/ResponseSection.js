@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from 'axios'
 import { useSWRConfig } from "swr";
 
@@ -7,6 +7,8 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
+import CircularProgress from '@mui/material/CircularProgress'
+import Box from '@mui/material/Box'
 
 //section that is generated below a Comment if context indicates the 
 //reply button has been pressed (context - "open")
@@ -17,8 +19,9 @@ import Button from "@mui/material/Button";
 
 const ResponseSection = (props) => {
     const { query } = props;
-    const responseTextRef = useRef();
+    const [loading, setLoading] = useState(false)
     const [responseText, setResponseText] = useState()
+    const handleChange = (event) => setResponseText(event.target.value)
     const { mutate } = useSWRConfig()
 
     //hanldes submit of a new comment
@@ -26,13 +29,14 @@ const ResponseSection = (props) => {
     //data as it's not replying to a specific comment
     //user is passed as null so the api handler only inserts and doesn't update
     const responseHandler = async () => {
-        const response = await axios.post('/api/add-comment', {
+        setLoading(true)
+        await axios.post('/api/add-comment', {
             user: null,
-            content: responseTextRef.current.value
+            content: responseText
         })
 
         mutate('/api/all-coms')
-        console.log(response)
+        setLoading(false)
     };
     
     //had similar configuration issues but decided against breaking this
@@ -71,15 +75,23 @@ const ResponseSection = (props) => {
                 multiline
                 fullWidth
                 rows={2}
-                ref={responseTextRef}
+                onChange={handleChange}
             />
         </Grid>
     );
 
-    useEffect(() => {
-        setResponseText(responseTextRef.current.value)
-        console.log(responseText)
-    })
+    const spinner = (
+        <Box
+            sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: '100%'
+            }}
+        >
+            <CircularProgress />
+        </Box>
+    )
 
     return (
         <Card
@@ -96,14 +108,14 @@ const ResponseSection = (props) => {
             >
                 {query ? (
                     <React.Fragment>
-                        {text}
+                        {loading ? spinner : text}
                         {avatar}
                         {button}
                     </React.Fragment>
                 ) : (
                     <React.Fragment>
                         {avatar}
-                        {text}
+                        {loading ? spinner : text}
                         {button}
                     </React.Fragment>
                 )}
