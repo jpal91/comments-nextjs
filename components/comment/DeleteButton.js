@@ -9,10 +9,12 @@ import Card from "@mui/material/Card";
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
+import CircularProgress from "@mui/material/CircularProgress";
 
 const DeleteButton = (props) => {
     const { username, comID, query } = props;
     const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false)
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const { mutate } = useSWRConfig()
@@ -25,12 +27,13 @@ const DeleteButton = (props) => {
     //takes comment id attached and sends to api to delete
     //after deletion, close modal and recall all-coms to pull updated listed
     const deleteHandler = async () => {
-
+        setLoading(true)
         await axios.post('/api/delete-comment', {
             comID: comID
         })
             .then(() => {
-                mutate('/api/all-coms')  
+                mutate('/api/all-coms')
+                setLoading(false)  
                 handleClose()
             })
         
@@ -62,10 +65,12 @@ const DeleteButton = (props) => {
                         top: "50%",
                         left: "50%",
                         transform: 'translate(-50%, -50%)',
-                        p: 3
+                        p: 3,
+                        justifyContent: loading ? 'center' : 'flex-start',
+                        alignItems: loading ? 'center' : 'normal'
                     }}
                 >
-                    <Grid container
+                    {!loading ? <Grid container
                         
                     >
                         <Grid item xs={12} sx={{ justifyContent: 'flex-start' }}>
@@ -86,7 +91,7 @@ const DeleteButton = (props) => {
                             <Button variant='contained' sx={{ backgroundColor: 'neutral.gBlue' }} onClick={handleClose}>No, Cancel</Button>
                             <Button variant='contained' sx={{ backgroundColor: 'primary.red' }} onClick={deleteHandler}>Yes, Delete</Button>
                         </Grid>
-                    </Grid>
+                    </Grid> : <CircularProgress size={100}/>}
                 </Card>
             </Modal>
         </React.Fragment>

@@ -46,7 +46,7 @@ const ReplySection = (props) => {
     //a certain order depending on if {query} indicates a large or small screen
 
     const button = (
-        <Grid item xs={6} lg={2} sx={{ alignItems: "center", mt: 1 }}>
+        <Grid item xs={6} lg={2} sx={{ alignItems: "center", mt: 0 }}>
             <Button variant="contained" sx={{ maxHeight: 50 }} onClick={replyHandler}>
                 Reply
             </Button>
@@ -77,7 +77,7 @@ const ReplySection = (props) => {
                 fullWidth
                 rows={2}
                 onChange={handleChange}
-                defaultValue={`@${commentData.user.username}`}
+                defaultValue={`@${commentData.user.username} `}
             />
         </Grid>
     );
