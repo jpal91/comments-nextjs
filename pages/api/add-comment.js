@@ -12,7 +12,7 @@ const handler = async (req, res) => {
     }
 
     const { user, comID, content } = req.body
-
+    return console.log(content)
     try {
         await client.connect()
 
@@ -28,7 +28,7 @@ const handler = async (req, res) => {
             content: content,
             createdAt: new Date().toISOString(),
             score: 1,
-            replyingTo: user.username || null,
+            replyingTo: user ? user.username : null,
             user: {
                 image: { webp: '/images/image-juliusomo.webp'},
                 username: 'juliusomo'

@@ -4,7 +4,7 @@ import { useTheme, useMediaQuery } from '@mui/material'
 import Grid from '@mui/material/Grid'
 
 import CommentsSection from '../components/CommentsSection'
-// import { formatting } from '../helpers/formatting'
+import CommentApp from '../components/CommentApp'
 
 const HomePage = () => {
 	// fetches all comments from api on loading
@@ -27,7 +27,7 @@ const HomePage = () => {
 
 			sx={{ width: matches ? 350 : 750 }}
 		>
-			<CommentsSection query={matches} comments={data} />
+			<CommentApp query={matches} comments={data} />
 		</Grid>
 	)
 };

@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import axios from 'axios'
 import { useSWRConfig } from "swr";
 
@@ -8,37 +8,33 @@ import TextField from "@mui/material/TextField";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 
-import ReplyContext from "../helpers/context";
-
 //section that is generated below a Comment if context indicates the 
 //reply button has been pressed (context - "open")
 
 //comes loaded with all the parent comment data so that a
 //reqest can be dispatched to the api and db can be updated with
-//data tying it to original comment 
+//new comment data
 
-const ReplySection = (props) => {
-    const { query, commentData } = props;
-    const textRef = useRef();
-    const replyCtx = useContext(ReplyContext);
+const ResponseSection = (props) => {
+    const { query } = props;
+    const responseTextRef = useRef();
+    const [responseText, setResponseText] = useState()
     const { mutate } = useSWRConfig()
 
-    //handles a submit of a reply to a comment
-    //first - removes the status of "open" from context so the reply box won't show any longer
-    //second - sends parent comment data and new comment text to api, db is updated
-    //third - mutate() calls any useSWR hooks with the same api call to revalidate and render new comment
-    const replyHandler = async () => {
-        replyCtx.removeReply(commentData.comID)
-
+    //hanldes submit of a new comment
+    //structurally similar to Reply Section but doesn't include any tied comment
+    //data as it's not replying to a specific comment
+    //user is passed as null so the api handler only inserts and doesn't update
+    const responseHandler = async () => {
         const response = await axios.post('/api/add-comment', {
-            ...commentData,
-            content: textRef.current.value
+            user: null,
+            content: responseTextRef.current.value
         })
 
         mutate('/api/all-coms')
         console.log(response)
     };
-
+    
     //had similar configuration issues but decided against breaking this
     //down into two "Mobile" and "Desktop" components
     //instead decided to break up the individual JSX (button, avatar, text) and return it in 
@@ -46,8 +42,8 @@ const ReplySection = (props) => {
 
     const button = (
         <Grid item xs={6} lg={2} sx={{ alignItems: "center", mt: 1 }}>
-            <Button variant="contained" sx={{ maxHeight: 50 }} onClick={replyHandler}>
-                Reply
+            <Button variant="contained" sx={{ maxHeight: 50 }} onClick={responseHandler}>
+                Send
             </Button>
         </Grid>
     );
@@ -75,11 +71,15 @@ const ReplySection = (props) => {
                 multiline
                 fullWidth
                 rows={2}
-                ref={textRef}
-                defaultValue={`@${commentData.user.username}`}
+                ref={responseTextRef}
             />
         </Grid>
     );
+
+    useEffect(() => {
+        setResponseText(responseTextRef.current.value)
+        console.log(responseText)
+    })
 
     return (
         <Card
@@ -112,6 +112,4 @@ const ReplySection = (props) => {
     );
 };
 
-export default ReplySection;
-
-// 6 1  12 9  6 2
+export default ResponseSection;
