@@ -1,20 +1,17 @@
 import Image from 'next/image'
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import IconButton from '@mui/material/IconButton'
 
 import DeleteButton from "./DeleteButton";
 
-//sub-component of Comment holds the reply button and functionality
+//alter component to ReplyButton
+//holds the user view of edit and delete which produce the appropriate functionality
 const UserReply = (props) => {
     const { query, comID, username } = props;
-    //const replyCtx = useContext(ReplyContext);
-    //const disabled = replyCtx.openReplies.includes(comID); //disables button after opening
 
-    //Button adds the id of the parent Comment to context
-    //adding to context array triggers the ReplySection to open under
-    //the comment with the same id
+    //DeleteButton leads to the modal functionality and delete api call
+    //edit button calls a prop function passed down from Desktop or Mobile
     return (
         <Grid
             item

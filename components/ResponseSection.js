@@ -10,12 +10,7 @@ import Button from "@mui/material/Button";
 import CircularProgress from '@mui/material/CircularProgress'
 import Box from '@mui/material/Box'
 
-//section that is generated below a Comment if context indicates the 
-//reply button has been pressed (context - "open")
-
-//comes loaded with all the parent comment data so that a
-//reqest can be dispatched to the api and db can be updated with
-//new comment data
+//alternate to the ReplySection, holds the comment box to add a new comment
 
 const ResponseSection = (props) => {
     const { query } = props;
@@ -76,6 +71,7 @@ const ResponseSection = (props) => {
                 fullWidth
                 rows={2}
                 onChange={handleChange}
+                disabled={loading}
             />
         </Grid>
     );
@@ -108,15 +104,15 @@ const ResponseSection = (props) => {
             >
                 {query ? (
                     <React.Fragment>
-                        {loading ? spinner : text}
+                        {text}
                         {avatar}
-                        {button}
+                        {loading ? spinner : button}
                     </React.Fragment>
                 ) : (
                     <React.Fragment>
                         {avatar}
-                        {loading ? spinner : text}
-                        {button}
+                        {text}
+                        {loading ? spinner : button}
                     </React.Fragment>
                 )}
             </Grid>

@@ -14,6 +14,10 @@ import EditContent from "./EditContent";
 const Mobile = (props) => {
     const { query, score, username, image, createdAt, reply, content, comID } =
         props;
+
+    //handles setting the text into a state of "edit" on your comments
+    //UserReply section appears if you are the user (as opposed to a reply button)
+    //Edit button func is passed as a prop
     const [edit, setEdit] = useState(false);
     const handleEdit = () => setEdit(!edit);
 
