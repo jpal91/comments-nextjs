@@ -6,21 +6,21 @@ This is a solution to the [Interactive comments section challenge on Frontend Me
 
 - [Overview](#overview)
 
-- [The challenge](#the-challenge)
+  - [The challenge](#the-challenge)
 
-- [Screenshot](#screenshot)
+  - [Screenshot](#screenshot)
 
-- [Links](#links)
+  - [Links](#links)
 
 - [My process](#my-process)
 
-- [Built with](#built-with)
+  - [Built with](#built-with)
 
-- [What I learned](#what-i-learned)
+  - [What I learned](#what-i-learned)
 
-- [Continued development](#continued-development)
+  - [Continued development](#continued-development)
 
-- [Useful resources](#useful-resources)
+  - [Useful resources](#useful-resources)
 
 - [Author](#author)
 
