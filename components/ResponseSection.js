@@ -75,6 +75,7 @@ const ResponseSection = (props) => {
         multiline
         fullWidth
         rows={2}
+        value={responseText}
         onChange={handleChange}
         disabled={loading}
       />
@@ -82,15 +83,17 @@ const ResponseSection = (props) => {
   );
 
   const spinner = (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-      }}
-    >
-      <CircularProgress />
-    </Box>
+    <Grid item xs={6} lg={2} sx={{ alignItems: "center", mt: 1 }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    </Grid>
   );
 
   return (
