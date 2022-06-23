@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Grid from '@mui/material/Grid'
 import Avatar from '@mui/material/Avatar'
 import Typography from '@mui/material/Typography'
@@ -35,12 +36,14 @@ const UserInfo = (props) => {
             sx={{ alignItems: 'center', justifyContent: 'flex-start' }}
         >
             <Avatar 
-                src={`/public/${image}`}
+                //src={`/public/${image}`}
                 sx={{
                     width: 30,
                     height: 30
                 }}
-            />
+            >
+            <Image src={image} width='30' height='30' />
+            </Avatar>
             <Typography
                 sx={{
                     fontWeight: 'bold',
