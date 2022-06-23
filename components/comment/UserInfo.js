@@ -31,7 +31,7 @@ const UserInfo = (props) => {
     return (
         <Grid
             item
-            xs={query ? 12 : 10}
+            xs={query ? 12 : 9}
             sx={{ alignItems: 'center', justifyContent: 'flex-start' }}
         >
             <Avatar 

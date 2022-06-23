@@ -19,18 +19,18 @@ const ReplyButton = (props) => {
     return (
         <Grid
             item
-            xs={query ? 6 : 2}
+            xs={query ? 6 : 3}
             sx={{
                 alignItems: "center",
-                justifyContent: query ? "flex-end" : "flex-start",
-
+                justifyContent: "flex-end",
+                
             }}
         >
             <DeleteButton username={username} query={query} comID={comID} />
             <Button
                 onClick={() => replyCtx.addReply(comID)}
                 disabled={disabled}
-
+                sx={{ mr: query ? 0 : 1 }}
             >
                 
                 <ReplyIcon

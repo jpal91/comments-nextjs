@@ -37,7 +37,7 @@ const UpOrDown = (props) => {
         <Grid
             item
             xs={query ? 6 : 1}
-            sx={{ justifyContent: 'flex-start' }}
+            sx={{ justifyContent: 'flex-start', ml: query ? 0 : 1 }}
         >
             <Box
                 sx={{
