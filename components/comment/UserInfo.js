@@ -35,7 +35,7 @@ const UserInfo = (props) => {
             sx={{ alignItems: 'center', justifyContent: 'flex-start' }}
         >
             <Avatar 
-                src={image}
+                src={`/public/${image}`}
                 sx={{
                     width: 30,
                     height: 30
