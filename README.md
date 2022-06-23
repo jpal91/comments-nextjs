@@ -48,7 +48,7 @@ Status of project based on initial criteria given for the challenge -
 
 ### Links
 
-- Solution URL: [https://github.com/jpal91/comments-nextjs/tree/comment-app](https://github.com/jpal91/comments-nextjs/tree/comment-app)
+- Solution URL: [https://github.com/jpal91/comments-nextjs/](https://github.com/jpal91/comments-nextjs/tree/comment-app)
 
 - Live Site URL: [https://comments-nextjs.vercel.app/](https://comments-nextjs.vercel.app/)
 
