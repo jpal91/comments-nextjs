@@ -1,3 +1,4 @@
+import React from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
@@ -12,7 +13,7 @@ const Content = (props) => {
             sx={{
                 mr: query ? 0 : 2,
                 mt: 1,
-                justifyContent: 'flex-start'
+                justifyContent: "flex-start",
             }}
         >
             <Typography className="span" sx={{ fontSize: 16 }}>
@@ -27,5 +28,6 @@ const Content = (props) => {
     );
 };
 
+export default Content;
 
-export default Content
+

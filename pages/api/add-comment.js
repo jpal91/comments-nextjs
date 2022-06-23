@@ -13,6 +13,10 @@ const handler = async (req, res) => {
 
     const { user, comID, content } = req.body
 
+    //filters out the part of the string referencing the username of the reply
+    //ie @username, the Content component automatically adds this in
+    const removeAtContent = content.split(' ').filter((c) => !c.includes('@')).join(' ')
+
     try {
         await client.connect()
 
@@ -25,7 +29,7 @@ const handler = async (req, res) => {
         //user is hard coded in now as there's no authentication set up for this app
         let obj = {
             comID: index[0].comID + 1,
-            content: content,
+            content: removeAtContent,
             createdAt: new Date().toISOString(),
             score: 1,
             replyingTo: user ? user.username : null,
