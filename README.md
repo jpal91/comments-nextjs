@@ -44,7 +44,7 @@ Status of project based on initial criteria given for the challenge -
 
 ### Screenshot
 
-![](./public/images/comments-nextjs-screenshot.jpg)
+![](./public/images1/comments-nextjs-screenshot.jpg)
 
 ### Links
 
